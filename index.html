@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>弹窗小作文</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0b1120;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      overflow: hidden;
+    }
+    .popup {
+      position: fixed;
+      max-width: 260px;
+      min-width: 180px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      font-size: 14px;
+      line-height: 1.6;
+      word-break: break-word;
+      animation: popIn 0.2s ease-out;
+      color: #333;
+    }
+    @keyframes popIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+
+<script>
+  const tips = [
+    "昭贤，天冷了记得添衣服",
+    "昭贤，卡特琳娜会让你过敏，可我不会。",
+    "昭贤，可以不推开我吗。",
+    "昭贤，这些眼镜你喜欢哪个。",
+    "昭贤，我给你买了烤红薯",
+    "昭贤，你以后能只和我玩吗。",
+    "昭贤，真的不理我了吗TT",
+    "太少了，看向我的的目光太少了",
+    "昭贤，你说过的话我会永远记得",
+    "昭贤，关于你的一切都闪闪发光",
+    "昭贤，你就是我的全部。",
+    "昭贤，你该摆脱所有枷锁，你是自由的。",
+    "昭贤，你值得所有的美好。",
+    "昭贤，我就是那个鼻涕虫。",
+    "昭贤，等我回来我就娶你",
+    "记得从这里下刀，沿胸骨正中画线",
+    "昭贤，你还有很多路要走，可以走",
+    "昭贤，五步之约就是你给我施下的第一个魔法",
+    "昭贤，我永远做你的小狗",
+    "昭贤，我来帮你推秋千",
+    "昭贤，你在为我祈福的时候也在为自己祈福",
+    "解救昭贤永远是赵玄的第一指令",
+    "昭贤，会有人记住你的承诺",
+    "五步是赵玄永远会给昭贤的安全距离"
+  ];
+
+  const colors = ["#FFE4E1", "#E8F3FF", "#E4FFE8", "#F5E8FF", "#FFF8DC"];
+
+  function createPopup() {
+    const div = document.createElement("div");
+    div.className = "popup";
+
+    div.textContent = tips[Math.floor(Math.random() * tips.length)];
+    div.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    const x = Math.random() * (vw - 260 - 20) + 10;
+    const y = Math.random() * (vh - 150 - 20) + 10;
+
+    div.style.left = x + "px";
+    div.style.top = y + "px";
+
+    document.body.appendChild(div);
+  }
+
+  let count = 0;
+  const max = 250;
+
+  const timer = setInterval(() => {
+    if (count >= max) {
+      clearInterval(timer);
+      return;
+    }
+    createPopup();
+    createPopup();
+    createPopup();
+    count++;
+  }, 50);
+</script>
+
+</body>
+</html>
